@@ -6,6 +6,10 @@ curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 
 #
 
+git clone https://github.com/CtrlPy/k3d-cluster-proxmox.git
+
+and create file:
+
 touch k3d.yaml
 
 ```
