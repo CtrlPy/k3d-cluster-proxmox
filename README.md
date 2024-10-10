@@ -41,7 +41,14 @@ scp -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87:/home/cat/.kube/config ~/.kube/p
 #
 change proxmox-config.yaml  add entry:
 
-server: https://192.168.1.87:36911
+
+
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://192.168.1.87:6443
+
+    delete:  `certificate-authority-data:`
+
 
 
 #
