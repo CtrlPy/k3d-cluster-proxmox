@@ -35,10 +35,22 @@ options:
 
 k3d cluster create --config k3d.yaml
 
+and: 
+
+```zsh
+k3s version v1.30.4-k3s1 (default)
+cat@k3d-kub ~ ❯ k3d cluster create mycluster \
+  --api-port 0.0.0.0:6443 \
+  -p "80:80@loadbalancer" \
+  -p "443:443@loadbalancer"
+```
+
 ssh -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87
 
 scp -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87:/home/cat/.kube/config ~/.kube/proxmox-config.yaml
+
 #
+
 change proxmox-config.yaml  add entry:
 
 
@@ -52,6 +64,7 @@ change proxmox-config.yaml  add entry:
 
 
 #
+
 export KUBECONFIG=~/.kube/config:~/.kube/proxmox-config.yaml
 kubectl config view --merge --flatten > ~/.kube/merged-config
 mv ~/.kube/merged-config ~/.kube/config
