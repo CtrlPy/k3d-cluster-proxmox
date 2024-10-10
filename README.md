@@ -8,7 +8,13 @@ curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 
 git clone https://github.com/CtrlPy/k3d-cluster-proxmox.git
 
-and create file:
+cd k3d-cluster-proxmox
+
+k3d cluster create --config k3d.yaml
+
+#
+
+or create file:
 
 touch k3d.yaml
 
@@ -35,7 +41,7 @@ options:
 
 k3d cluster create --config k3d.yaml
 
-and: 
+or: 
 
 ```zsh
 k3s version v1.30.4-k3s1 (default)
@@ -51,9 +57,7 @@ scp -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87:/home/cat/.kube/config ~/.kube/p
 
 #
 
-change proxmox-config.yaml  add entry:
-
-
+change proxmox-config.yaml,  add entry:
 
 - cluster:
     insecure-skip-tls-verify: true
