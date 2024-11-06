@@ -41,7 +41,7 @@ options:
 
 k3d cluster create --config k3d.yaml
 
-or: 
+or:
 
 ```zsh
 k3s version v1.30.4-k3s1 (default)
@@ -59,7 +59,7 @@ scp -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87:/home/cat/.kube/config ~/.kube/p
 
 change proxmox-config.yaml,  add entry:
 ```zsh
-    
+
     remove this field:   certificate-authority-data:
 
 
@@ -71,9 +71,10 @@ change proxmox-config.yaml,  add entry:
 
 #
 
-export KUBECONFIG=~/.kube/config:~/.kube/proxmox-config.yaml
+export KUBECONFIG=~/.kube/config:~/.kube/cortex-config.yaml
 kubectl config view --merge --flatten > ~/.kube/merged-config
 mv ~/.kube/merged-config ~/.kube/config
+
 
 kubectl config get-contexts
 
