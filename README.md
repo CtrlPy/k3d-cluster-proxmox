@@ -45,17 +45,17 @@ or:
 
 ```zsh
 k3s version v1.30.4-k3s1 (default)
-cat@k3d-kub ~ ❯ k3d cluster create mycluster \
+cat@k3d-kub ~ ❯ k3d cluster create name-cluster \
   --api-port 0.0.0.0:6443 \
   -p "80:80@loadbalancer" \
   -p "443:443@loadbalancer"
 ```
-execute on the server: `kubectl create clusterrolebinding admin-binding --clusterrole=cluster-admin --user=admin@k3d-k3s-cortex`
+execute on the server: `kubectl create clusterrolebinding admin-binding --clusterrole=cluster-admin --user=admin@name-cluster`
 
 execute on the leptop:
 `ssh -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87`
 
-`scp -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87:/home/cat/.kube/config ~/.kube/proxmox-config.yaml`
+`scp -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87:/home/cat/.kube/config ~/.kube/name-cluster-config.yaml`
 
 #
 
@@ -73,11 +73,11 @@ change proxmox-config.yaml,  add entry:
 
 #
 
-export KUBECONFIG=~/.kube/config:~/.kube/cortex-config.yaml
+export KUBECONFIG=~/.kube/config:~/.kube/name-cluster-config.yaml
 kubectl config view --merge --flatten > ~/.kube/merged-config
 mv ~/.kube/merged-config ~/.kube/config
 
 
 kubectl config get-contexts
 
-kubectl config use-context k3d-my-cluster
+kubectl config use-context name-cluster
