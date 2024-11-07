@@ -50,10 +50,12 @@ cat@k3d-kub ~ ❯ k3d cluster create mycluster \
   -p "80:80@loadbalancer" \
   -p "443:443@loadbalancer"
 ```
+execute on the server: `kubectl create clusterrolebinding admin-binding --clusterrole=cluster-admin --user=admin@k3d-k3s-cortex`
 
-ssh -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87
+execute on the leptop:
+`ssh -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87`
 
-scp -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87:/home/cat/.kube/config ~/.kube/proxmox-config.yaml
+`scp -i ~/.ssh/yoshi-ubuntu-new cat@192.168.1.87:/home/cat/.kube/config ~/.kube/proxmox-config.yaml`
 
 #
 
